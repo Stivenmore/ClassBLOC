@@ -16,10 +16,12 @@ class CounterBloc extends Bloc<CounterEvent, CounterState> {
   }
 
   void _addvalue(CounterAdd even, Emitter<CounterState> emit) {
-    emit(state.copyWith(value: state.value + 1));
+    emit(state.copyWith(
+        value: state.value + 1, alert: state.value < 0 ? true : false));
   }
 
   void _removevalue(CounterRemove even, Emitter<CounterState> emit) {
-    emit(state.copyWith(value: state.value - 1));
+    emit(state.copyWith(
+        value: state.value - 1, alert: state.value < 0 ? true : false));
   }
 }
